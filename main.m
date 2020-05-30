@@ -7,11 +7,10 @@ participant = 1; %to choose the participant, from participant 1 to participant 8
 
 [beac_rssi_fixed_filtered, beac_rssi_activity_filtered, beac_motion] = Load_data(participant);
 
+load(step_events); % provide the line numbers in which Toe-off occur
 
-load(step_events); % step events detected with msDTW
 step_events = [1, step_events, length(beac_motion)]; % Add '1' and the lenght of the dataset as points of support
 positions=ZUPT_KF(acc, gyr_unbiased, gravity, acc_mean, fs, Step_events, participant, idx_fig+4);
-
 
 
 % Get strides where the beacons are moved. That indicates that is the
